@@ -19,21 +19,22 @@
   <meta name="author" content="YuMingwu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="Swiftstruct VS classstruct 是值类型，class 是引用类型 值类型和引用类型 值类型不能使用继承体系，引用类型可以。 值类型：struct、enum, 引用类型： class、close let 修饰的值类型不能在初始化之后修改内部的变量的值，引用类型可以 内存管理 值类型的内存分配在栈上，引用类型的内存分配在堆上 值类型是线程安全的，应为每个线程都有自己的栈，不同线程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://github.com/LUCK-YXH/myblog.git/2024/10/29/hello-world/index.html">
+<meta property="og:title" content="Swift">
+<meta property="og:url" content="https://github.com/LUCK-YXH/myblog.git/2024/10/29/Swift/index.html">
 <meta property="og:site_name" content="喻铭悟">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="Swiftstruct VS classstruct 是值类型，class 是引用类型 值类型和引用类型 值类型不能使用继承体系，引用类型可以。 值类型：struct、enum, 引用类型： class、close let 修饰的值类型不能在初始化之后修改内部的变量的值，引用类型可以 内存管理 值类型的内存分配在栈上，引用类型的内存分配在堆上 值类型是线程安全的，应为每个线程都有自己的栈，不同线程">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-10-29T06:08:23.193Z">
-<meta property="article:modified_time" content="2024-10-29T06:08:23.193Z">
+<meta property="article:published_time" content="2024-10-29T10:50:38.000Z">
+<meta property="article:modified_time" content="2024-10-29T11:35:03.683Z">
 <meta property="article:author" content="YuMingwu">
+<meta property="article:tag" content="八股文-Swift">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Hello World - 喻铭悟</title>
+  <title>Swift - 喻铭悟</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hello World"></span>
+            <span id="subtitle" data-typed-text="Swift"></span>
           
         </div>
 
@@ -210,8 +211,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-10-29 14:08" pubdate>
-          2024年10月29日 下午
+        <time datetime="2024-10-29 18:50" pubdate>
+          2024年10月29日 晚上
         </time>
       </span>
     
@@ -222,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          18 字
+          672 字
         
       </span>
     
@@ -233,7 +234,7 @@
         
         
         
-          1 分钟
+          6 分钟
         
       </span>
     
@@ -270,24 +271,60 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Hello World</h1>
+            <h1 id="seo-header">Swift</h1>
             
             
               <div class="markdown-body">
                 
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+                <h2 id="Swift"><a href="#Swift" class="headerlink" title="Swift"></a>Swift</h2><h3 id="struct-VS-class"><a href="#struct-VS-class" class="headerlink" title="struct VS class"></a>struct VS class</h3><p>struct 是值类型，class 是引用类型</p>
+<h3 id="值类型和引用类型"><a href="#值类型和引用类型" class="headerlink" title="值类型和引用类型"></a>值类型和引用类型</h3><ul>
+<li>值类型不能使用继承体系，引用类型可以。</li>
+<li>值类型：struct、enum, 引用类型： class、close</li>
+<li>let 修饰的值类型不能在初始化之后修改内部的变量的值，引用类型可以</li>
+<li>内存管理<ul>
+<li>值类型的内存分配在栈上，引用类型的内存分配在堆上</li>
+<li>值类型是线程安全的，应为每个线程都有自己的栈，不同线程之间不共享栈信息</li>
+<li>值类型（栈上）不需要引用计数，内存的申请和释放由栈处理，</li>
+<li>所以效率更高、熟读更快</li>
+</ul>
+</li>
+</ul>
+<p>swift中集合使用值类型的原因</p>
+<ul>
+<li>值类型效率高</li>
+<li>值类型线程安全</li>
+</ul>
+<h2 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h2><ul>
+<li>元组可以存放不同类型的值</li>
+<li>元组不是集合</li>
+<li>元组可以通过映射来进行元素遍历</li>
+<li>元组不能作为字典的key，因为没有实现哈希协议</li>
+<li>元组的内存结构是连续的</li>
+</ul>
+<h2 id="可选型"><a href="#可选型" class="headerlink" title="可选型"></a>可选型</h2><p>可选型是为了表达一个变量为空的情况，在类型后面加问号？来定义可选型，或者直接使用Optional&lt;&gt;</p>
+<p>值类型或者引用类型都可以是可选型变量。</p>
+<p>可选型本质上是一个本质上是一个范性枚举。</p>
+<h2 id="存储属性和计算属性"><a href="#存储属性和计算属性" class="headerlink" title="存储属性和计算属性"></a>存储属性和计算属性</h2><p><strong>存储属性</strong>：存储在示例对象的内存中，类似于成员变量。结构体和类可以定义为存储属性，枚举不可以。</p>
+<p><strong>计算属性</strong>: 本质就是方法，不占用实例对像内存。枚举、结构体、类都可以定义为计算属性。</p>
+<h2 id="延迟存储属性"><a href="#延迟存储属性" class="headerlink" title="延迟存储属性"></a>延迟存储属性</h2><p>使用<code>lazy</code>可以定义延迟存储属性，延迟存储属性不能用于计算属性。</p>
+<p><code>lazy</code>属性必须是<code>var</code>，不能是<code>let</code>。</p>
+<p><strong>如果多条线程访问<code>lazy</code>属性无法保证属性只被初始化一次。</strong></p>
+<h2 id="static和class的区别"><a href="#static和class的区别" class="headerlink" title="static和class的区别"></a><code>static</code>和<code>class</code>的区别</h2><ul>
+<li><code>static</code>可以用在值类型，<code>class</code>不可以</li>
+<li><code>static</code>修饰的不可以被继承，<code>class</code>修饰的可以被继承</li>
+</ul>
+<h2 id="初始化器"><a href="#初始化器" class="headerlink" title="初始化器"></a>初始化器</h2><ul>
+<li>结构体、枚举、类都可以定义初始化器</li>
+<li>初始化器分为：指定初始化器、便捷初始化器</li>
+<li>规则<ul>
+<li>每个类至少有一个指定初始化器，指定初始化器是类的主要初始化器</li>
+<li>默认初始化器纵使指定初始化器</li>
+<li>指定初始化器必须从他的直系父类调用指定初始化器</li>
+<li>便捷初始化器必须调用当前类的另一个初始化器</li>
+<li>便捷初始化器最终必须调用一个指定初始化器</li>
+</ul>
+</li>
+</ul>
 
                 
               </div>
@@ -296,6 +333,34 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/myblog/categories/iOS/" class="category-chain-item">iOS</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/myblog/tags/%E5%85%AB%E8%82%A1%E6%96%87-Swift/" class="print-no-link">#八股文-Swift</a>
+      
+    </div>
   
 </div>
 
@@ -305,8 +370,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hello World</div>
-      <div>https://github.com/LUCK-YXH/myblog.git/2024/10/29/hello-world/</div>
+      <div>Swift</div>
+      <div>https://github.com/LUCK-YXH/myblog.git/2024/10/29/Swift/</div>
     </div>
     <div class="license-meta">
       
@@ -350,15 +415,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/myblog/2024/10/29/Swift/" title="Swift">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Swift</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/myblog/2024/10/29/hello-world/" title="Hello World">
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>

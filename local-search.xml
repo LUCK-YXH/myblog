@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>Swift</title>
+    <link href="/myblog/2024/10/29/Swift/"/>
+    <url>/myblog/2024/10/29/Swift/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Swift"><a href="#Swift" class="headerlink" title="Swift"></a>Swift</h2><h3 id="struct-VS-class"><a href="#struct-VS-class" class="headerlink" title="struct VS class"></a>struct VS class</h3><p>struct 是值类型，class 是引用类型</p><h3 id="值类型和引用类型"><a href="#值类型和引用类型" class="headerlink" title="值类型和引用类型"></a>值类型和引用类型</h3><ul><li>值类型不能使用继承体系，引用类型可以。</li><li>值类型：struct、enum, 引用类型： class、close</li><li>let 修饰的值类型不能在初始化之后修改内部的变量的值，引用类型可以</li><li>内存管理<ul><li>值类型的内存分配在栈上，引用类型的内存分配在堆上</li><li>值类型是线程安全的，应为每个线程都有自己的栈，不同线程之间不共享栈信息</li><li>值类型（栈上）不需要引用计数，内存的申请和释放由栈处理，</li><li>所以效率更高、熟读更快</li></ul></li></ul><p>swift中集合使用值类型的原因</p><ul><li>值类型效率高</li><li>值类型线程安全</li></ul><h2 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h2><ul><li>元组可以存放不同类型的值</li><li>元组不是集合</li><li>元组可以通过映射来进行元素遍历</li><li>元组不能作为字典的key，因为没有实现哈希协议</li><li>元组的内存结构是连续的</li></ul><h2 id="可选型"><a href="#可选型" class="headerlink" title="可选型"></a>可选型</h2><p>可选型是为了表达一个变量为空的情况，在类型后面加问号？来定义可选型，或者直接使用Optional&lt;&gt;</p><p>值类型或者引用类型都可以是可选型变量。</p><p>可选型本质上是一个本质上是一个范性枚举。</p><h2 id="存储属性和计算属性"><a href="#存储属性和计算属性" class="headerlink" title="存储属性和计算属性"></a>存储属性和计算属性</h2><p><strong>存储属性</strong>：存储在示例对象的内存中，类似于成员变量。结构体和类可以定义为存储属性，枚举不可以。</p><p><strong>计算属性</strong>: 本质就是方法，不占用实例对像内存。枚举、结构体、类都可以定义为计算属性。</p><h2 id="延迟存储属性"><a href="#延迟存储属性" class="headerlink" title="延迟存储属性"></a>延迟存储属性</h2><p>使用<code>lazy</code>可以定义延迟存储属性，延迟存储属性不能用于计算属性。</p><p><code>lazy</code>属性必须是<code>var</code>，不能是<code>let</code>。</p><p><strong>如果多条线程访问<code>lazy</code>属性无法保证属性只被初始化一次。</strong></p><h2 id="static和class的区别"><a href="#static和class的区别" class="headerlink" title="static和class的区别"></a><code>static</code>和<code>class</code>的区别</h2><ul><li><code>static</code>可以用在值类型，<code>class</code>不可以</li><li><code>static</code>修饰的不可以被继承，<code>class</code>修饰的可以被继承</li></ul><h2 id="初始化器"><a href="#初始化器" class="headerlink" title="初始化器"></a>初始化器</h2><ul><li>结构体、枚举、类都可以定义初始化器</li><li>初始化器分为：指定初始化器、便捷初始化器</li><li>规则<ul><li>每个类至少有一个指定初始化器，指定初始化器是类的主要初始化器</li><li>默认初始化器纵使指定初始化器</li><li>指定初始化器必须从他的直系父类调用指定初始化器</li><li>便捷初始化器必须调用当前类的另一个初始化器</li><li>便捷初始化器最终必须调用一个指定初始化器</li></ul></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>iOS</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>八股文-Swift</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Hello World</title>
     <link href="/myblog/2024/10/29/hello-world/"/>
     <url>/myblog/2024/10/29/hello-world/</url>
