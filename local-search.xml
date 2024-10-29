@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>Runloop</title>
+    <link href="/myblog/2024/10/29/Runloop/"/>
+    <url>/myblog/2024/10/29/Runloop/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Runloop"><a href="#Runloop" class="headerlink" title="Runloop"></a>Runloop</h2><h3 id="简述runloop"><a href="#简述runloop" class="headerlink" title="简述runloop"></a>简述runloop</h3><p>Runloop本质上就是while死循环，有了这个循环就可以确保线程永远不会结束，这个循环通过操作系统底层的函数进行休眠和唤起，以此来节省消耗。</p><p>Runloop主要的工作是接收并处理各种事件，包括创建和销毁自动释放池，处理 点击事件，block回调，倒计时等等。</p><p>一个Runloop包含多个mode, 一个mode又包含多个source，time, observer。</p><p>线程和Runloop是一一对应的，它们的关系被保存在一个全局的Dictionary里。线程创建并不会带有Runloop, 只有在第一次获取时才会创建。当线程结束时销毁Runloop，除了主线程外，只能在线程内部获取对应的Runloop。</p><p>Runloop的使用场景</p><ul><li>NSTime不停止</li><li>线程保活</li><li>界面刷新</li><li>事件响应</li><li>自动释放池的创建和释放</li></ul><h1 id="Runloop和线程的关系"><a href="#Runloop和线程的关系" class="headerlink" title="Runloop和线程的关系"></a>Runloop和线程的关系</h1><ul><li>Runloop是基于线程进行管理的</li><li>主线程默认带有runloop。子线程默认没有，只有当第一次在子线程获取runloop时才回创建runloop.</li><li>runloop和线程是一一对应的，他们之间的映射关系使用一个Dictionary惊醒保存。</li></ul><p>#performSelector:withObject:afterDelay:</p><ul><li>在当前线程执行，不会创建新线程</li><li>实现原理：使用定时器，等待runloop调用</li><li><code>afterDelay</code>参数设置的是最小时间，即使设置为0也不会立即执行<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs objectivec"> - (<span class="hljs-type">void</span>)viewDidLoad &#123;<br> [<span class="hljs-variable language_">super</span> viewDidLoad];<br> <br> <br> <span class="hljs-comment">/*</span><br><span class="hljs-comment">  下面代码的输出顺序：</span><br><span class="hljs-comment">  1</span><br><span class="hljs-comment">  3</span><br><span class="hljs-comment">  ViewController test</span><br><span class="hljs-comment">  */</span><br>  <br> <span class="hljs-comment">//开始执行</span><br> <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;1&quot;</span>);<br>   <br> [<span class="hljs-keyword">self</span> performSelector:<span class="hljs-keyword">@selector</span>(test) withObject:<span class="hljs-literal">nil</span> afterDelay:<span class="hljs-number">0</span>];<br>   <br> <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;3&quot;</span>);<br> &#125;<br><br>- (<span class="hljs-type">void</span>)test &#123;<br> <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;ViewController test&quot;</span>);<br> &#125;<br></code></pre></td></tr></table></figure></li></ul><h2 id="Runloop-自动释放池线程"><a href="#Runloop-自动释放池线程" class="headerlink" title="Runloop 自动释放池线程"></a>Runloop 自动释放池线程</h2><p>一个线程对应一个runloop, 一个runloop中可以有多个自动释放池</p><p>其他</p><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs objectivec">[<span class="hljs-keyword">self</span> performSelector:<span class="hljs-keyword">@selector</span>(test3) withObject:<span class="hljs-literal">nil</span> afterDelay:<span class="hljs-number">0</span>];<br><span class="hljs-built_in">dispatch_async</span>(dispatch_get_main_queue(), ^&#123;<br><span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;---111&quot;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure><p>会先执行dispath_asyc中的内容，在执行perfirmSelector:withObjct:afterDeley: 中的内容。是因为runloop中会处理GCD再处理定时器。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>iOS</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>八股文-Runloop</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Swift</title>
     <link href="/myblog/2024/10/29/Swift/"/>
     <url>/myblog/2024/10/29/Swift/</url>

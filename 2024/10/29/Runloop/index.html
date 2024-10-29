@@ -19,22 +19,22 @@
   <meta name="author" content="YuMingwu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Swiftstruct VS classstruct 是值类型，class 是引用类型 值类型和引用类型 值类型不能使用继承体系，引用类型可以。 值类型：struct、enum, 引用类型： class、close let 修饰的值类型不能在初始化之后修改内部的变量的值，引用类型可以 内存管理 值类型的内存分配在栈上，引用类型的内存分配在堆上 值类型是线程安全的，应为每个线程都有自己的栈，不同线程">
+    <meta name="description" content="Runloop简述runloopRunloop本质上就是while死循环，有了这个循环就可以确保线程永远不会结束，这个循环通过操作系统底层的函数进行休眠和唤起，以此来节省消耗。 Runloop主要的工作是接收并处理各种事件，包括创建和销毁自动释放池，处理 点击事件，block回调，倒计时等等。 一个Runloop包含多个mode, 一个mode又包含多个source，time, observer。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Swift">
-<meta property="og:url" content="https://github.com/LUCK-YXH/myblog.git/2024/10/29/Swift/index.html">
+<meta property="og:title" content="Runloop">
+<meta property="og:url" content="https://github.com/LUCK-YXH/myblog.git/2024/10/29/Runloop/index.html">
 <meta property="og:site_name" content="喻铭悟">
-<meta property="og:description" content="Swiftstruct VS classstruct 是值类型，class 是引用类型 值类型和引用类型 值类型不能使用继承体系，引用类型可以。 值类型：struct、enum, 引用类型： class、close let 修饰的值类型不能在初始化之后修改内部的变量的值，引用类型可以 内存管理 值类型的内存分配在栈上，引用类型的内存分配在堆上 值类型是线程安全的，应为每个线程都有自己的栈，不同线程">
+<meta property="og:description" content="Runloop简述runloopRunloop本质上就是while死循环，有了这个循环就可以确保线程永远不会结束，这个循环通过操作系统底层的函数进行休眠和唤起，以此来节省消耗。 Runloop主要的工作是接收并处理各种事件，包括创建和销毁自动释放池，处理 点击事件，block回调，倒计时等等。 一个Runloop包含多个mode, 一个mode又包含多个source，time, observer。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-10-29T10:50:38.000Z">
-<meta property="article:modified_time" content="2024-10-29T11:35:03.683Z">
+<meta property="article:published_time" content="2024-10-29T11:55:31.000Z">
+<meta property="article:modified_time" content="2024-10-29T11:57:16.530Z">
 <meta property="article:author" content="YuMingwu">
-<meta property="article:tag" content="八股文-Swift">
+<meta property="article:tag" content="八股文-Runloop">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Swift - 喻铭悟</title>
+  <title>Runloop - 喻铭悟</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Swift"></span>
+            <span id="subtitle" data-typed-text="Runloop"></span>
           
         </div>
 
@@ -211,7 +211,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-10-29 18:50" pubdate>
+        <time datetime="2024-10-29 19:55" pubdate>
           2024年10月29日 晚上
         </time>
       </span>
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          672 字
+          477 字
         
       </span>
     
@@ -234,7 +234,7 @@
         
         
         
-          6 分钟
+          4 分钟
         
       </span>
     
@@ -271,60 +271,38 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Swift</h1>
+            <h1 id="seo-header">Runloop</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="Swift"><a href="#Swift" class="headerlink" title="Swift"></a>Swift</h2><h3 id="struct-VS-class"><a href="#struct-VS-class" class="headerlink" title="struct VS class"></a>struct VS class</h3><p>struct 是值类型，class 是引用类型</p>
-<h3 id="值类型和引用类型"><a href="#值类型和引用类型" class="headerlink" title="值类型和引用类型"></a>值类型和引用类型</h3><ul>
-<li>值类型不能使用继承体系，引用类型可以。</li>
-<li>值类型：struct、enum, 引用类型： class、close</li>
-<li>let 修饰的值类型不能在初始化之后修改内部的变量的值，引用类型可以</li>
-<li>内存管理<ul>
-<li>值类型的内存分配在栈上，引用类型的内存分配在堆上</li>
-<li>值类型是线程安全的，应为每个线程都有自己的栈，不同线程之间不共享栈信息</li>
-<li>值类型（栈上）不需要引用计数，内存的申请和释放由栈处理，</li>
-<li>所以效率更高、熟读更快</li>
-</ul>
-</li>
-</ul>
-<p>swift中集合使用值类型的原因</p>
+                <h2 id="Runloop"><a href="#Runloop" class="headerlink" title="Runloop"></a>Runloop</h2><h3 id="简述runloop"><a href="#简述runloop" class="headerlink" title="简述runloop"></a>简述runloop</h3><p>Runloop本质上就是while死循环，有了这个循环就可以确保线程永远不会结束，这个循环通过操作系统底层的函数进行休眠和唤起，以此来节省消耗。</p>
+<p>Runloop主要的工作是接收并处理各种事件，包括创建和销毁自动释放池，处理 点击事件，block回调，倒计时等等。</p>
+<p>一个Runloop包含多个mode, 一个mode又包含多个source，time, observer。</p>
+<p>线程和Runloop是一一对应的，它们的关系被保存在一个全局的Dictionary里。线程创建并不会带有Runloop, 只有在第一次获取时才会创建。当线程结束时销毁Runloop，除了主线程外，只能在线程内部获取对应的Runloop。</p>
+<p>Runloop的使用场景</p>
 <ul>
-<li>值类型效率高</li>
-<li>值类型线程安全</li>
+<li>NSTime不停止</li>
+<li>线程保活</li>
+<li>界面刷新</li>
+<li>事件响应</li>
+<li>自动释放池的创建和释放</li>
 </ul>
-<h2 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h2><ul>
-<li>元组可以存放不同类型的值</li>
-<li>元组不是集合</li>
-<li>元组可以通过映射来进行元素遍历</li>
-<li>元组不能作为字典的key，因为没有实现哈希协议</li>
-<li>元组的内存结构是连续的</li>
+<h1 id="Runloop和线程的关系"><a href="#Runloop和线程的关系" class="headerlink" title="Runloop和线程的关系"></a>Runloop和线程的关系</h1><ul>
+<li>Runloop是基于线程进行管理的</li>
+<li>主线程默认带有runloop。子线程默认没有，只有当第一次在子线程获取runloop时才回创建runloop.</li>
+<li>runloop和线程是一一对应的，他们之间的映射关系使用一个Dictionary惊醒保存。</li>
 </ul>
-<h2 id="可选型"><a href="#可选型" class="headerlink" title="可选型"></a>可选型</h2><p>可选型是为了表达一个变量为空的情况，在类型后面加问号？来定义可选型，或者直接使用Optional&lt;&gt;</p>
-<p>值类型或者引用类型都可以是可选型变量。</p>
-<p>可选型本质上是一个本质上是一个范性枚举。</p>
-<h2 id="存储属性和计算属性"><a href="#存储属性和计算属性" class="headerlink" title="存储属性和计算属性"></a>存储属性和计算属性</h2><p><strong>存储属性</strong>：存储在示例对象的内存中，类似于成员变量。结构体和类可以定义为存储属性，枚举不可以。</p>
-<p><strong>计算属性</strong>: 本质就是方法，不占用实例对像内存。枚举、结构体、类都可以定义为计算属性。</p>
-<h2 id="延迟存储属性"><a href="#延迟存储属性" class="headerlink" title="延迟存储属性"></a>延迟存储属性</h2><p>使用<code>lazy</code>可以定义延迟存储属性，延迟存储属性不能用于计算属性。</p>
-<p><code>lazy</code>属性必须是<code>var</code>，不能是<code>let</code>。</p>
-<p><strong>如果多条线程访问<code>lazy</code>属性无法保证属性只被初始化一次。</strong></p>
-<h2 id="static和class的区别"><a href="#static和class的区别" class="headerlink" title="static和class的区别"></a><code>static</code>和<code>class</code>的区别</h2><ul>
-<li><code>static</code>可以用在值类型，<code>class</code>不可以</li>
-<li><code>static</code>修饰的不可以被继承，<code>class</code>修饰的可以被继承</li>
+<p>#performSelector:withObject:afterDelay:</p>
+<ul>
+<li>在当前线程执行，不会创建新线程</li>
+<li>实现原理：使用定时器，等待runloop调用</li>
+<li><code>afterDelay</code>参数设置的是最小时间，即使设置为0也不会立即执行<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs objectivec"> - (<span class="hljs-type">void</span>)viewDidLoad &#123;<br> [<span class="hljs-variable language_">super</span> viewDidLoad];<br> <br> <br> <span class="hljs-comment">/*</span><br><span class="hljs-comment">  下面代码的输出顺序：</span><br><span class="hljs-comment">  1</span><br><span class="hljs-comment">  3</span><br><span class="hljs-comment">  ViewController test</span><br><span class="hljs-comment">  */</span><br>  <br> <span class="hljs-comment">//开始执行</span><br> <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;1&quot;</span>);<br>   <br> [<span class="hljs-keyword">self</span> performSelector:<span class="hljs-keyword">@selector</span>(test) withObject:<span class="hljs-literal">nil</span> afterDelay:<span class="hljs-number">0</span>];<br>   <br> <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;3&quot;</span>);<br> &#125;<br><br>- (<span class="hljs-type">void</span>)test &#123;<br> 	<span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;ViewController test&quot;</span>);<br> &#125;<br></code></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="初始化器"><a href="#初始化器" class="headerlink" title="初始化器"></a>初始化器</h2><ul>
-<li>结构体、枚举、类都可以定义初始化器</li>
-<li>初始化器分为：指定初始化器、便捷初始化器</li>
-<li>规则<ul>
-<li>每个类至少有一个指定初始化器，指定初始化器是类的主要初始化器</li>
-<li>默认初始化器纵使指定初始化器</li>
-<li>指定初始化器必须从他的直系父类调用指定初始化器</li>
-<li>便捷初始化器必须调用当前类的另一个初始化器</li>
-<li>便捷初始化器最终必须调用一个指定初始化器</li>
-</ul>
-</li>
-</ul>
+<h2 id="Runloop-自动释放池线程"><a href="#Runloop-自动释放池线程" class="headerlink" title="Runloop 自动释放池线程"></a>Runloop 自动释放池线程</h2><p>一个线程对应一个runloop, 一个runloop中可以有多个自动释放池</p>
+<p>其他</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs objectivec">[<span class="hljs-keyword">self</span> performSelector:<span class="hljs-keyword">@selector</span>(test3) withObject:<span class="hljs-literal">nil</span> afterDelay:<span class="hljs-number">0</span>];<br><span class="hljs-built_in">dispatch_async</span>(dispatch_get_main_queue(), ^&#123;<br>	<span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;---111&quot;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
+<p>会先执行dispath_asyc中的内容，在执行perfirmSelector:withObjct:afterDeley: 中的内容。是因为runloop中会处理GCD再处理定时器。</p>
 
                 
               </div>
@@ -358,7 +336,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/myblog/tags/%E5%85%AB%E8%82%A1%E6%96%87-Swift/" class="print-no-link">#八股文-Swift</a>
+        <a href="/myblog/tags/%E5%85%AB%E8%82%A1%E6%96%87-Runloop/" class="print-no-link">#八股文-Runloop</a>
       
     </div>
   
@@ -370,8 +348,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Swift</div>
-      <div>https://github.com/LUCK-YXH/myblog.git/2024/10/29/Swift/</div>
+      <div>Runloop</div>
+      <div>https://github.com/LUCK-YXH/myblog.git/2024/10/29/Runloop/</div>
     </div>
     <div class="license-meta">
       
@@ -415,18 +393,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/myblog/2024/10/29/Runloop/" title="Runloop">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Runloop</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/myblog/2024/10/29/hello-world/" title="Hello World">
-                        <span class="hidden-mobile">Hello World</span>
+                      <a href="/myblog/2024/10/29/Swift/" title="Swift">
+                        <span class="hidden-mobile">Swift</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
