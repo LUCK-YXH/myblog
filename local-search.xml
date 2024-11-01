@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>Flutter创建App Icon</title>
+    <link href="/myblog/2024/11/01/f-launcher-icons/"/>
+    <url>/myblog/2024/11/01/f-launcher-icons/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Flutter添加一个App-Icon"><a href="#Flutter添加一个App-Icon" class="headerlink" title="Flutter添加一个App Icon"></a>Flutter添加一个App Icon</h2><p>flutter的插件flutter_launcher_icons可以根据给定的图片自动生成不同分辨率的应用图标</p><h3 id="1-需要准备一张1024-1024的图片，把图片放到一个目录中。没有就新建一个。如（assets-icon-notes-png）"><a href="#1-需要准备一张1024-1024的图片，把图片放到一个目录中。没有就新建一个。如（assets-icon-notes-png）" class="headerlink" title="1. 需要准备一张1024*1024的图片，把图片放到一个目录中。没有就新建一个。如（assets&#x2F;icon&#x2F;notes.png）"></a>1. 需要准备一张1024*1024的图片，把图片放到一个目录中。没有就新建一个。如（assets&#x2F;icon&#x2F;notes.png）</h3><h3 id="2-引入flutter-launcher-icons插件"><a href="#2-引入flutter-launcher-icons插件" class="headerlink" title="2. 引入flutter_launcher_icons插件"></a>2. 引入flutter_launcher_icons插件</h3><p>在pubspec.yaml文件中的dev_dependencies下配置依赖</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">flutter_icons:</span><br>  <span class="hljs-attr">android:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">ios:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">image_path:</span> <span class="hljs-string">&quot;assets/icon/notes.png&quot;</span><br></code></pre></td></tr></table></figure><h3 id="3-配置插件"><a href="#3-配置插件" class="headerlink" title="3. 配置插件"></a>3. 配置插件</h3><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-symbol">dev_dependencies:</span><br><span class="hljs-symbol">  flutter_test:</span><br><span class="hljs-symbol">    sdk:</span> flutter<br><span class="hljs-symbol">  flutter_launcher_icons:</span> ^<span class="hljs-number">0.7</span><span class="hljs-number">.4</span><br><span class="hljs-symbol"></span><br><span class="hljs-symbol"></span><br><span class="hljs-symbol">flutter_icons:</span><br><span class="hljs-symbol">  android:</span> <span class="hljs-string">&quot;ic_launcher&quot;</span><br><span class="hljs-symbol">  ios:</span> false<br><span class="hljs-symbol">  image_path:</span> <span class="hljs-string">&quot;assets/icon/notes.png&quot;</span><br></code></pre></td></tr></table></figure><blockquote><p>注意： flutter_icons与dev_dependencies是同级配置</p><p>android:ic_launcher 表示生成android平台的应用图标的名称<br>ios:false 表示不生成ios的图标<br>image_path 为源图片的路径</p></blockquote><h3 id="4-运行命令"><a href="#4-运行命令" class="headerlink" title="4. 运行命令"></a>4. 运行命令</h3><p>在工程的根目录下运行命令</p><ul><li>运行 flutter pub get 拉取依赖<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs actionscript">flutter pub <span class="hljs-keyword">get</span><br></code></pre></td></tr></table></figure></li><li>运行 flutter pub run flutter_launcher_icons:main 生成图片<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">flutter pub <span class="hljs-built_in">run</span> flutter_launcher_icons:main<br></code></pre></td></tr></table></figure>命令运行成功后会自动的生成对应尺寸的应用图标。</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Flutter</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Flutter_学习</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Closures</title>
     <link href="/myblog/2024/10/29/Closures/"/>
     <url>/myblog/2024/10/29/Closures/</url>
