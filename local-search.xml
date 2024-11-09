@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>xcode16 pod init 失败</title>
+    <link href="/myblog/2024/11/09/xcode16-pod-error/"/>
+    <url>/myblog/2024/11/09/xcode16-pod-error/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Xcode-16-中-pod-init-失败"><a href="#Xcode-16-中-pod-init-失败" class="headerlink" title="Xcode 16 中 pod init 失败"></a>Xcode 16 中 pod init 失败</h2><p>如果您在Xcode 16中获取pod init或pod安装时遇到过问题，这是由于结构和项目设置发生了更改。有一个典型的问题，它与项目配置有关，这不适合预期的环境，CocoaPods。</p><h2 id="为什么会出现这个错误？"><a href="#为什么会出现这个错误？" class="headerlink" title="为什么会出现这个错误？"></a>为什么会出现这个错误？</h2><p>出现这个问题是因为Xcode 16在某些方面与CocoaPods不兼容。其中一些包括最小化的ProjectReferenceProxies和project.pbxproj文件中的更高对象版本会导致pod init或pod安装期间的冲突。</p><h2 id="分步指南"><a href="#分步指南" class="headerlink" title="分步指南"></a>分步指南</h2><h3 id="1-在Xcode中将项目文件夹创建为组"><a href="#1-在Xcode中将项目文件夹创建为组" class="headerlink" title="1.在Xcode中将项目文件夹创建为组"></a>1.在Xcode中将项目文件夹创建为组</h3><ul><li>在Xcode中打开你的项目。</li><li>在项目导航器中，您应该找到您的项目文件夹。</li><li>转到项目文件夹，右键单击它，然后按“转换为组”。此步骤有助于Xcode了解文件夹的布局方式。</li></ul><p>这种转换确保它们被当作一个组而不是文件夹引用来对待，这在使用可可豆荚时在某些情况下可能是一个问题。</p><h3 id="2-在项目-pbxproj中更改项目设置"><a href="#2-在项目-pbxproj中更改项目设置" class="headerlink" title="2.在项目.pbxproj中更改项目设置"></a>2.在项目.pbxproj中更改项目设置</h3><p>最初，问题可能在于.xcodeproj软件包中包含的project.pbxproj文件。</p><p>解决这个问题：</p><ul><li><p>打开包含.xcodeproj文件的文件夹，右键单击它，然后单击“显示软件包内容”。</p></li><li><p>使用您选择的任何文本编辑器（TextEdit、VSCode等）打开project.pbxproj文件</p></li></ul><h3 id="3-删除特定行"><a href="#3-删除特定行" class="headerlink" title="3.删除特定行"></a>3.删除特定行</h3><p>在project.pbxproj文件中，搜索并删除以下行：</p><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-attribute">minimizedProjectReferenceProxies</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span><span class="hljs-comment">;</span><br><span class="hljs-attribute">preferredProjectObjectVersion</span> <span class="hljs-operator">=</span> <span class="hljs-number">77</span><span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure><p>对于CocoaPods来说，这些线路的安装可能会有问题，因此删除它们可以解决问题。</p><h3 id="4-更新对象版本"><a href="#4-更新对象版本" class="headerlink" title="4.更新对象版本"></a>4.更新对象版本</h3><p>接下来，在project.pbxproj文件中找到objectVersion行。在下一步中，用新名称替换上一个版本。你应该看到这样的东西：</p><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-attribute">objectVersion</span> <span class="hljs-operator">=</span> <span class="hljs-number">77</span><span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure><p>将其更改为：</p><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-attribute">objectVersion</span> <span class="hljs-operator">=</span> <span class="hljs-number">56</span><span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure><p>此版本更新确保了与CocoaPods的兼容性。</p><h3 id="5-运行CocoaPods命令"><a href="#5-运行CocoaPods命令" class="headerlink" title="5.运行CocoaPods命令"></a>5.运行CocoaPods命令</h3><p>进行这些更改后，您可以继续在项目中初始化CocoaPods，打开终端，转到项目目录并运行：</p><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmake">pod init<br>pod <span class="hljs-keyword">install</span><br></code></pre></td></tr></table></figure><p>这现在应该能成功工作，您将能够在项目中安装所需的pods来摆脱它失败。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>iOS</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Xcode Pod 错误</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Flutter创建App 闪屏</title>
     <link href="/myblog/2024/11/01/f-splash/"/>
     <url>/myblog/2024/11/01/f-splash/</url>
