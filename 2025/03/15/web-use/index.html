@@ -26,19 +26,19 @@
 <meta property="og:site_name" content="喻铭悟">
 <meta property="og:description" content="关于xcode 16如何创建文件夹引用最近更新了xcode 16发现之前直接导入文件夹引用的方法不能使用了，导致打包的前端文件不能正常加载。特此记录一下解决方法。 1.首先将目标文件导入项目 2.选中目标文件，在最右侧选项处选择引用整个文件结果图 3.在Build Phases选项卡下，点击Copy Bundle Resources，将目标文件添加到应用包里 点击展开 点击+号，选择目标文件后点击">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://github.com/myblog/myblog/images/web_01.png">
-<meta property="og:image" content="https://github.com/myblog/myblog/images/web_02.png">
-<meta property="og:image" content="https://github.com/myblog/myblog/images/web_03.png">
-<meta property="og:image" content="https://github.com/myblog/myblog/images/web_04.png">
-<meta property="og:image" content="https://github.com/myblog/myblog/images/web_05.png">
-<meta property="og:image" content="https://github.com/myblog/myblog/images/web_06.png">
-<meta property="og:image" content="https://github.com/myblog/myblog/images/web_07.png">
+<meta property="og:image" content="https://github.com/myblog/images/web_01.png">
+<meta property="og:image" content="https://github.com/myblog/images/web_02.png">
+<meta property="og:image" content="https://github.com/myblog/images/web_03.png">
+<meta property="og:image" content="https://github.com/myblog/images/web_04.png">
+<meta property="og:image" content="https://github.com/myblog/images/web_05.png">
+<meta property="og:image" content="https://github.com/myblog/images/web_06.png">
+<meta property="og:image" content="https://github.com/myblog/images/web_07.png">
 <meta property="article:published_time" content="2025-03-15T10:34:54.000Z">
-<meta property="article:modified_time" content="2025-03-18T15:14:56.845Z">
+<meta property="article:modified_time" content="2025-03-18T15:16:49.912Z">
 <meta property="article:author" content="YuMingwu">
 <meta property="article:tag" content="前端项目导入iOS">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://github.com/myblog/myblog/images/web_01.png">
+<meta name="twitter:image" content="https://github.com/myblog/images/web_01.png">
   
   
   
@@ -285,14 +285,14 @@
               <div class="markdown-body">
                 
                 <h4 id="关于xcode-16如何创建文件夹引用"><a href="#关于xcode-16如何创建文件夹引用" class="headerlink" title="关于xcode 16如何创建文件夹引用"></a>关于xcode 16如何创建文件夹引用</h4><p>最近更新了xcode 16发现之前直接导入文件夹引用的方法不能使用了，导致打包的前端文件不能正常加载。特此记录一下解决方法。</p>
-<h5 id="1-首先将目标文件导入项目"><a href="#1-首先将目标文件导入项目" class="headerlink" title="1.首先将目标文件导入项目"></a>1.首先将目标文件导入项目</h5><p><img src="/myblog/myblog/images/web_01.png" srcset="/myblog/img/loading.gif" lazyload alt="web_01"></p>
-<h5 id="2-选中目标文件，在最右侧选项处选择引用整个文件"><a href="#2-选中目标文件，在最右侧选项处选择引用整个文件" class="headerlink" title="2.选中目标文件，在最右侧选项处选择引用整个文件"></a>2.选中目标文件，在最右侧选项处选择引用整个文件</h5><p><img src="/myblog/myblog/images/web_02.png" srcset="/myblog/img/loading.gif" lazyload alt="web_02"><br>结果图<br><img src="/myblog/myblog/images/web_03.png" srcset="/myblog/img/loading.gif" lazyload alt="web_03"></p>
+<h5 id="1-首先将目标文件导入项目"><a href="#1-首先将目标文件导入项目" class="headerlink" title="1.首先将目标文件导入项目"></a>1.首先将目标文件导入项目</h5><p><img src="/myblog/images/web_01.png" srcset="/myblog/img/loading.gif" lazyload alt="web_01"></p>
+<h5 id="2-选中目标文件，在最右侧选项处选择引用整个文件"><a href="#2-选中目标文件，在最右侧选项处选择引用整个文件" class="headerlink" title="2.选中目标文件，在最右侧选项处选择引用整个文件"></a>2.选中目标文件，在最右侧选项处选择引用整个文件</h5><p><img src="/myblog/images/web_02.png" srcset="/myblog/img/loading.gif" lazyload alt="web_02"><br>结果图<br><img src="/myblog/images/web_03.png" srcset="/myblog/img/loading.gif" lazyload alt="web_03"></p>
 <h5 id="3-在Build-Phases选项卡下，点击Copy-Bundle-Resources，将目标文件添加到应用包里"><a href="#3-在Build-Phases选项卡下，点击Copy-Bundle-Resources，将目标文件添加到应用包里" class="headerlink" title="3.在Build Phases选项卡下，点击Copy Bundle Resources，将目标文件添加到应用包里"></a>3.在Build Phases选项卡下，点击Copy Bundle Resources，将目标文件添加到应用包里</h5><ol>
-<li>点击展开<br><img src="/myblog/myblog/images/web_04.png" srcset="/myblog/img/loading.gif" lazyload alt="web_04"></li>
-<li>点击+号，选择目标文件后点击“Add”<br><img src="/myblog/myblog/images/web_05.png" srcset="/myblog/img/loading.gif" lazyload alt="web_05"></li>
-<li>添加完成后就可以正常引用整个文件夹了<br><img src="/myblog/myblog/images/web_06.png" srcset="/myblog/img/loading.gif" lazyload alt="web_06"></li>
+<li>点击展开<br><img src="/myblog/images/web_04.png" srcset="/myblog/img/loading.gif" lazyload alt="web_04"></li>
+<li>点击+号，选择目标文件后点击“Add”<br><img src="/myblog/images/web_05.png" srcset="/myblog/img/loading.gif" lazyload alt="web_05"></li>
+<li>添加完成后就可以正常引用整个文件夹了<br><img src="/myblog/images/web_06.png" srcset="/myblog/img/loading.gif" lazyload alt="web_06"></li>
 </ol>
-<h5 id="4-通过验证可以引用到整个文件夹"><a href="#4-通过验证可以引用到整个文件夹" class="headerlink" title="4.通过验证可以引用到整个文件夹"></a>4.通过验证可以引用到整个文件夹</h5><p><img src="/myblog/myblog/images/web_07.png" srcset="/myblog/img/loading.gif" lazyload alt="web_07"></p>
+<h5 id="4-通过验证可以引用到整个文件夹"><a href="#4-通过验证可以引用到整个文件夹" class="headerlink" title="4.通过验证可以引用到整个文件夹"></a>4.通过验证可以引用到整个文件夹</h5><p><img src="/myblog/images/web_07.png" srcset="/myblog/img/loading.gif" lazyload alt="web_07"></p>
 
                 
               </div>
